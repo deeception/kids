@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Smooth Scroll Landing Page</title>
+    <link rel="stylesheet" href="homepage/home.css">
+    <link rel="shortcut icon" type="x-icon" href="icons/icon.png">
+    <style>
+        .container {
+            position: relative;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Limit the width of the image to the page width */
+            height: auto; /* Maintain aspect ratio */
+            z-index: -1;
+        }
+        /* Adjust the position of sections to make space for the image */
+        section {
+            padding-top: 100px; /* Adjust as needed based on the height of your navigation bar */
+        }
+        /* Create two columns layout */
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+        }
+        .about-column {
+            flex: 1;
+            margin-left: 20px; /* Adjust spacing between columns */
+            margin-right: 20px; /* Adjust spacing between columns */
+            padding: 0 2px; /* Add padding to the columns */
+            max-width: calc(50% - 20px); /* Limit the width of each column */
+        }
+        /* Justify paragraphs */
+        .about-column p {
+            text-align: justify;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Add the image within the container, at the top -->
+        <img src="homepage/doc.jpg" alt="Doctor Image">
+        <nav class="navbar">
+            <ul>
+                <li class="image"><img class="logo-img" src="homepage/logo.png" alt="Logo"></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#Organization">Organization</a></li>
+                <!--<li><a href="#model">Model</a></li>-->
+                <li><a href="#contact">Contact</a></li>
+                <li class = "clk"><div id="clock"></div></li>
+            </ul>
+        </nav>
+        <section id="home" class="section">
+            <h1>Welcome To K.I.D.S</h1>
+            <a href="upload.html" class="btn">Upload Scans</a>
+        </section>
+        <section id="about" class="section">
+            <h1>About</h1>
+
+            <div class="about-content">
+                <div class="about-column">
+                    <p class="lead">The K.I.D.S (Knee Injury Detection System) is a cutting-edge innovation crafted by Deependra and Sairam, 
+                    students from Amrita Vishwa Vidyapeetham Chennai. Functioning as an intelligent radiology assistant, K.I.D.S goes 
+                    beyond conventional diagnostics by proficiently identifying knee injuries and providing a detailed grading of their
+                    severity. This groundbreaking system utilizes advanced algorithms to not only detect but also categorize knee injuries,
+                    offering valuable insights for medical practitioners.</p>
+                </div>
+                <div class="about-column">
+                    <p class="lead">Moreover, K.I.D.S showcases its prowess by extending its diagnostic capabilities to the identification 
+                    of three distinct diseases namely, ACL tears, Meniscal tears and Osteoarthritis marking a significant stride in the realm 
+                    of medical technology and enhancing the efficiency of healthcare systems.</p>
+                </div>
+            </div>
+        </section>
+        <section id="Organization">
+            <h1>Organization</h1>
+            <div class="about-content">
+                <div class="about-column">
+            <p class="lead">Larsen & Toubro (L&T) is a prominent multinational conglomerate based in India, renowned for its leadership in 
+                engineering, procurement, and construction (EPC) services. Established in 1938 by Holck-Larsen and Toubro, the company 
+                has significantly influenced India's infrastructure development. Operating across diverse sectors like engineering, 
+                construction, information technology, financial services, and manufacturing, L&T has successfully executed a wide array 
+                of projects both domestically and internationally. Notable for its commitment to quality, innovation, and sustainability, 
+                L&T has left its mark on various iconic infrastructure projects, including bridges, highways, airports, and power plants. </p> 
+            </div>
+            <div class="about-column">
+                <p class="lead">
+                The company's expertise extends to heavy engineering, defense, aerospace, and technology services. L&T's emphasis on 
+                responsible business practices and corporate social responsibility is reflected in its dedication to community development, '
+                education, healthcare, and environmental conservation. Known for delivering complex projects with precision and adhering to 
+                the highest safety standards, L&T stands as a key player in the global engineering and construction industry.</p>
+            </div>
+        </div>
+        </section>
+        <!--<section id="model">
+            <h1>Model</h1>
+            <p class="lead">In this project, we utilized YOLO v8, a state-of-the-art object detection model, to predict images for three medical conditions: ACL (Anterior Cruciate Ligament) injuries, meniscal injuries, and osteoarthritis.</p>
+            
+            <h2>Data Overview</h2>
+            <p>We collected a comprehensive dataset comprising:</p>
+            <ul>
+                <li>ACL: Approximately 3000 images</li>
+                <li>Meniscal: Over 2000 images</li>
+                <li>Osteoarthritis: Over 9000 images</li>
+            </ul>
+            
+            <h2>Model Training</h2>
+            <p>The training process involved splitting the dataset into training, testing, and validation sets. We used the training images for model training and adjusted the validation and testing sets accordingly to ensure model generalization.</p>
+            
+            <h2>Model Evaluation</h2>
+            <p>To assess the model's performance, we conducted rigorous evaluations on the test set. The model's scores were determined based on various metrics, including precision, recall, and F1-score.</p>
+            
+            <h2>Model Visualization</h2>
+            <p>Below are visualizations of the model's predictions for each medical condition:</p>
+            
+            
+            <h2>Significance of Diseases</h2>
+            <p>Each of the diseases targeted by our model—ACL tears, meniscal tears, and osteoarthritis—holds significant clinical importance:</p>
+            <ul>
+                <li><strong>ACL Tears:</strong> ACL tears are one of the most common knee injuries, especially among athletes involved in sports that require sudden stops or changes in direction. They can lead to instability in the knee joint and often require surgical intervention followed by extensive rehabilitation.</li>
+                <li><strong>Meniscal Tears:</strong> Meniscal tears occur when the cartilage in the knee, known as the meniscus, is damaged, typically due to twisting motions. These injuries can cause pain, swelling, and limited mobility, and they often require surgical repair or removal.</li>
+                <li><strong>Osteoarthritis:</strong> Osteoarthritis is a degenerative joint disease characterized by the breakdown of cartilage and bone within a joint. It is a leading cause of disability worldwide, particularly among older adults. Osteoarthritis can result in chronic pain, stiffness, and reduced quality of life.</li>
+            </ul>
+            <p>By accurately detecting and classifying these conditions, our model can assist healthcare professionals in providing timely diagnosis, treatment planning, and monitoring of patients, ultimately improving patient outcomes and quality of life.</p>
+        </section> -->
+        
+
+        <section id="contact" class="section">
+            <h1>Contact Us</h1>
+            <div class="contact-content">
+                <div class="contact-row">
+                    <div class="contact-column">
+                        <h2>Deependra K. Singh</h2>
+                        <ul>
+                            <li class="contact-info"><strong>Email:</strong> <a href="mailto:deependrakumar.nx@gmail.com">deependrakumar.nx@gmail.com</a></li>
+                            <li class="contact-info"><strong>Phone:</strong> +91-9359840082</li>
+                            <li class="contact-info"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/deependraksingh/" target="_blank">LinkedIn Profile</a></li>
+                        </ul>
+                        <a href="resume1.pdf" class="btn1" target="_blank">Resume</a>
+                    </div>
+                    <div class="contact-column">
+                        <h2>Sairam DV</h2>
+                        <ul>
+                            <li class="contact-info"><strong>Email:</strong> <a href="mailto:dvsairam2003@gmail.com">dvsairam2003@gmail.com</a></li>
+                            <li class="contact-info"><strong>Phone:</strong> +91-9625541512</li>
+                            <li class="contact-info"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/dvsairam/" target="_blank">LinkedIn Profile</a></li>
+                        </ul>
+                        <a href="resume2.pdf" class="btn1" target="_blank">Resume</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        
+    </div>
+
+    <script>
+        function updateClock() {
+                const now = new Date();
+                const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                const dayOfWeek = daysOfWeek[now.getDay()];
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const seconds = now.getSeconds().toString().padStart(2, '0');
+        
+                const timeString = `${dayOfWeek} ${hours}:${minutes}:${seconds}`;
+                document.getElementById('clock').innerText = timeString;
+            }
+
+            setInterval(updateClock, 1000);
+            updateClock();
+
+            
+    </script>
+</body>
+</html>

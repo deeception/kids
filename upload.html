@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIDS-upload image</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="shortcut icon" type="x-icon" href="icons/icon.png">
+
+    <style>
+        /* Loading screen styles */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* darker semi-transparent black background */
+            z-index: 9999; /* ensure it appears above other elements */
+            display: none; /* hidden by default */
+        }
+        
+        #loading-spinner {
+            position: absolute;
+            top: 30%;
+            left: 47%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 6px solid #f3f3f3; /* Light gray border */
+            border-top: 6px solid #3498db; /* Blue border for spinner */
+            animation: spin 1s linear infinite; /* Spin animation */
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        #fun-facts {
+    position: absolute;
+    top: calc(50% + 200px); /* Adjusted to position slightly below the loading spinner */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff; /* White text color */
+    font-size: 20px; /* Increased font size */
+    font-weight: bold;
+    width: 80%;
+    display: none; /* Hidden by default */
+}
+
+.fact {
+    position: absolute; /* Position each fact absolutely */
+    display: inline-block; /* Display as inline-block for dynamic width */
+    padding: 10px; /* Add padding for spacing */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    background-color: #000; /* Black background color */
+    box-shadow: 0 0 10px #000; /* Black shadow for highlighting */
+    margin-bottom: 10px; /* Add margin for spacing between facts */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(-50px); /* Move facts up by 50px initially */
+    top: 50%; /* Align all facts to the same vertical position */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center horizontally and vertically */
+    width: auto; /* Allow the width to adjust dynamically */
+}
+
+/* Apply hover effect to facts */
+.fact:hover {
+    transform: scale(1.1); /* Enlarge the fact on hover */
+}
+
+/* Apply staggered delay to each fact */
+#fun-facts .fact:nth-child(odd) {
+    transition-delay: 0.1s;
+}
+
+#fun-facts .fact:nth-child(even) {
+    transition-delay: 0.2s;
+}
+
+/* Make the fun facts visible when the container is displayed */
+#fun-facts.active .fact {
+    opacity: 1;
+    transform: translateY(0); /* Move the fact to its original position */
+}
+
+
+
+
+        .spinner-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.button-container {
+    position: relative;
+    bottom: -10px; /* Adjust as needed */
+    width: 100%;
+    text-align: center;
+}
+
+.button-box {
+    display: inline-block;
+}
+
+
+
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to{
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes spin3D {
+  from {
+    transform: rotate3d(.5,.5,.5, 360deg);
+  }
+  to{
+    transform: rotate3d(0deg);
+  }
+}
+
+/* GRID STYLING */
+
+.spinner-box {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.solar-system {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orbit {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fafbfC;
+  border-radius: 50%;
+} 
+
+.earth-orbit {
+  width: 165px;
+  height: 165px;
+  animation: spin 12s linear 0s infinite;
+}
+
+.venus-orbit {
+  width: 120px;
+  height: 120px;
+  animation: spin 7.4s linear 0s infinite;
+}
+
+.mercury-orbit {
+  width: 90px;
+  height: 90px;
+  animation: spin 3s linear 0s infinite;
+}
+
+.planet {
+  position: absolute;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #3ff9dc;
+}
+
+.sun {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #ffab91;
+}
+
+.list-section {
+    position: relative; /* Set position to relative */
+    overflow: hidden; /* Hide overflow */
+}
+
+.list-container {
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f100;
+}
+
+/* Webkit (Chrome, Safari) */
+.list-container::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.list-container::-webkit-scrollbar-track {
+    background: transparent; /* Transparent background to hide the track */
+}
+
+.list-container::-webkit-scrollbar-thumb {
+    background: #f1f1f100; /* Color of the thumb */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.list-container::-webkit-scrollbar-thumb:hover {
+    background: #f1f1f100; /* Darker color on hover */
+}
+
+/* CSS for home button */
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999; /* Ensure it appears above other elements */
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow for better visibility */
+}
+
+.home-button:hover {
+    background-color: #f0f0f0; /* Change background color on hover */
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-button">Home</a>
+    
+    <div class="container">
+        <div class="header-section">
+            <h1>Upload Files</h1>
+            <p>Upload files you want to predict with our model.</p>
+            <p>JPG and PNG are allowed.</p>
+        </div>
+        <div class="drop-section">
+            <div class="col">
+                <div class="cloud-icon">    
+                    <img src="icons/cloud.png" alt="cloud">
+                </div>
+                <span>Drag & Drop your files here</span>
+                <span>OR</span>
+                <button class="file-selector">Browse Files</button>
+                <input type="file" class="file-selector-input" multiple>
+            </div>
+            <div class="col">
+                <div class="drop-here">Drop Here</div>
+            </div>
+        </div>
+        <div class="list-section">
+            <div class="list-title">Uploaded Files</div>
+            <div class="list-container">
+                <div class="list"></div>
+            </div>
+            <div class="button-container">
+                <div class="button-box">
+                    <button class="twelve" id="predict-button">Predict</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        
+
+    <!-- Loading screen -->
+    <!-- Loading screen -->
+<div id="loading-overlay">
+    <div class="spinner-box">
+        <div class="solar-system">
+            <div class="earth-orbit orbit">
+                <div class="planet earth"></div>
+                <div class="venus-orbit orbit">
+                    <div class="planet venus"></div>
+                    <div class="mercury-orbit orbit">
+                        <div class="planet mercury"></div>
+                        <div class="sun"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="fun-facts">
+        <div class="fact">The human body has over 600 muscles.</div>
+        <div class="fact">The brain is about 60% fat.</div>
+        <div class="fact">Your nose can remember 50,000 different scents.</div>
+        <div class="fact">The average person has about 10,000 taste buds.</div>
+        <div class="fact">The human eye can distinguish about 10 million different colors.</div>
+        <div class="fact">Your heart beats around 100,000 times a day.</div>
+        <div class="fact">The strongest muscle in the human body is the masseter (jaw muscle).</div>
+        <div class="fact">The left lung is smaller than the right lung to make room for the heart.</div>
+        <div class="fact">You blink about 15-20 times per minute.</div>
+        <div class="fact">Your ears keep growing throughout your entire life.</div>
+        <div class="fact">The liver is the only organ that can regenerate itself.</div>
+        <div class="fact">Your skin is the largest organ in your body.</div>
+        <div class="fact">The human skeleton renews itself completely every 10 years.</div>
+        <div class="fact">The surface area of your lungs is roughly the same size as a tennis court.</div>
+        <div class="fact">The human body produces about 1 to 2 liters of saliva each day.</div>
+        <div class="fact">Your hair grows faster in warm weather.</div>
+        <div class="fact">The average person sheds about 50 to 100 hairs per day.</div>
+        <div class="fact">Your stomach lining is replaced every 3 to 4 days.</div>
+        <div class="fact">The human body has enough iron to make a metal nail 3 inches long.</div>
+        <div class="fact">Humans shed about 600,000 particles of skin every hour.</div>
+        <div class="fact">Your eyes are always the same size from birth, but your nose and ears never stop growing.</div>
+        <div class="fact">Your fingernails grow faster than your toenails.</div>
+        <div class="fact">Your heart can continue to beat even when it's disconnected from the body.</div>
+        <div class="fact">The strongest bone in your body is the femur (thigh bone).</div>
+        <div class="fact">Your brain generates about 12-25 watts of electricity – enough to power a low-wattage LED light bulb.</div>
+    </div>
+    
+    </div>
+
+<script src="js/script.js"></script>
+<script>
+    // Function to display fun facts with fading effect
+    function displayFunFacts() {
+        var facts = document.querySelectorAll(".fact");
+        var index = 0;
+
+        function displayNextFact() {
+            if (index < facts.length) {
+                facts[index].style.opacity = 1;
+                setTimeout(function() {
+                    facts[index].style.opacity = 0;
+                    index++;
+                    if (index === facts.length) {
+                        index = 0; // Loop back to the first fact
+                    }
+                    displayNextFact();
+                }, 10000); // 5 seconds
+            }
+        }
+
+        displayNextFact();
+    }
+
+    // Add event listener to the predict button
+    document.getElementById("predict-button").addEventListener("click", function() {
+        // Show loading overlay
+        document.getElementById("loading-overlay").style.display = "block";
+        // Show fun facts after a short delay
+        setTimeout(function() {
+            document.getElementById("fun-facts").style.display = "block";
+            // Start displaying fun facts
+            displayFunFacts();
+        }, 2000); // Adjust delay time as needed
+
+        // Execute the model.py script using PHP
+        fetch('run_model.php')
+        .then(response => response.json())
+        .then(data => {
+            // Redirect to prediction.html when model.py completes execution
+            if (data.success) {
+                window.location.href = "prediction.html";
+            } else {
+                alert("Error: Model.py execution failed.");
+                // Hide loading overlay and fun facts if there's an error
+                document.getElementById("loading-overlay").style.display = "none";
+                document.getElementById("fun-facts").style.display = "none";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Hide loading overlay and fun facts if there's an error
+            document.getElementById("loading-overlay").style.display = "none";
+            document.getElementById("fun-facts").style.display = "none";
+        });
+    });
+</script>
+</body>
+</html>

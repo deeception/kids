@@ -3,3 +3,7 @@
 Our system goes beyond mere detection; it identifies and grades specific knee issues such as meniscal tears, arthritis, and ACL injuries with unparalleled accuracy. Built on the robust YOLOv8 architecture, our model extracts intricate spatial patterns from three-dimensional knee MRI data, ensuring comprehensive pathology coverage.
 
 But we didn't stop there. KIDS features an intuitive application interface, allowing seamless interaction for both patients and doctors. Doctors can efficiently manage cases, accessing patient details, scans, and reports through a user-friendly interface.
+
+Checkout the demo:
+KIDS (Knee injury detection system)
+https://youtu.be/MlJ82OuA4V8 
